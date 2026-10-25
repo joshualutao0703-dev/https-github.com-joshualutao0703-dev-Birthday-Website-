@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday, Birthday Celebrant!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main>
+  <h1><small>It’s your day!</small>Happy Birthday,<br>Joshua S. Lutao!</h1>
+  <h1><small> October 30, 2007</small></h1>
+  <p class="lede">Someone special made you a little cake. Make a wish, then blow out the candles.</p>
+
+  <div class="cake-wrap">
+    <svg class="cake" viewBox="0 0 300 270" role="img" aria-label="A blue birthday cake with three candles">
+      <ellipse cx="150" cy="248" rx="140" ry="14" fill="#B8D9FF"/>
+      <rect x="40" y="168" width="220" height="76" rx="22" fill="#6DB6F2"/>
+      <rect x="70" y="112" width="160" height="64" rx="20" fill="#9FCBFA"/>
+      <path d="M70 134c0 14 14 14 14 4 0 12 16 12 16 0 0 14 16 14 16 2 0 14 16 14 16 0 0 12 16 12 16 2 0 12 16 12 16 0 0 14 16 14 16 2 0 10 14 10 14-2v-22a20 20 0 0 0-20-20H90a20 20 0 0 0-20 20z" fill="#fff"/>
+      <path d="M40 194c0 16 16 16 16 4 0 14 18 14 18 0 0 16 18 16 18 2 0 14 18 14 18 0 0 16 18 16 18 2 0 14 18 14 18 0 0 14 18 14 18 2 0 12 16 12 16-2v-10a22 22 0 0 0-22-22H62a22 22 0 0 0-22 22z" fill="#fff"/>
+      <g fill="#2878D0">
+        <path d="M82 222c-8-6-12-10-12-15a7 7 0 0 1 12-4 7 7 0 0 1 12 4c0 5-4 9-12 15z"/>
+        <path d="M150 226c-8-6-12-10-12-15a7 7 0 0 1 12-4 7 7 0 0 1 12 4c0 5-4 9-12 15z"/>
+        <path d="M218 222c-8-6-12-10-12-15a7 7 0 0 1 12-4 7 7 0 0 1 12 4c0 5-4 9-12 15z"/>
+      </g>
+      <circle cx="112" cy="150" r="5" fill="#6DB6F2"/><circle cx="150" cy="154" r="5" fill="#6DB6F2"/><circle cx="188" cy="150" r="5" fill="#6DB6F2"/>
+      <g>
+        <rect x="104" y="72" width="14" height="42" rx="7" fill="#FFD84D"/><rect x="104" y="84" width="14" height="6" fill="#fff" opacity=".7"/>
+        <rect x="143" y="66" width="14" height="48" rx="7" fill="#7FD6FF"/><rect x="143" y="80" width="14" height="6" fill="#fff" opacity=".7"/>
+        <rect x="182" y="72" width="14" height="42" rx="7" fill="#C9A7FF"/><rect x="182" y="84" width="14" height="6" fill="#fff" opacity=".7"/>
+      </g>
+      <g class="smoke" id="smoke" fill="none" stroke="#6688AD" stroke-width="3" stroke-linecap="round">
+        <path d="M111 66c-6-8 6-12 0-22"/><path d="M150 60c-6-8 6-12 0-22"/><path d="M189 66c-6-8 6-12 0-22"/>
+      </g>
+      <g id="flames">
+        <path class="flame" tabindex="0" role="button" aria-label="Blow out candle 1" d="M111 68c-9-8-9-17 0-28 9 11 9 20 0 28z" fill="#FFB020"/>
+        <path class="flame" tabindex="0" role="button" aria-label="Blow out candle 2" d="M150 62c-9-8-9-17 0-28 9 11 9 20 0 28z" fill="#FFB020"/>
+        <path class="flame" tabindex="0" role="button" aria-label="Blow out candle 3" d="M189 68c-9-8-9-17 0-28 9 11 9 20 0 28z" fill="#FFB020"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="actions">
+    <button id="blow" type="button">Blow out the candles</button>
+    <button id="relight" type="button" class="soft" hidden>Light them again</button>
+    <button id="song" type="button" class="soft" aria-pressed="false">🎵 Play birthday song</button>
+  </div>
+  <p class="hint" id="hint">Tip: you can also tap each flame.</p>
+
+  <section class="letter" id="letter" aria-live="polite">
+    <h2>A note just for you</h2>
+    <p>Dear Joshua S. Lutao,</p>
+    <p>You’re the kind of friend who makes ordinary days feel like a party. Thank you for the laughs, the snacks, and every time you showed up when it counted.</p>
+    <p>I hope this year is soft, sparkly, and full of good surprises. MAG MOVE ON KANA SA KANYA HAHAHA.</p>
+    <p class="sign">Beloved Cutepal Freinds 💖</p>
+  </section>
+
+  <section class="booth" aria-labelledby="booth-title">
+    <h2 id="booth-title">Photo booth</h2>
+    <p class="lede">Strike a pose! Take 4 photos and get your own birthday photo strip.</p>
+    <div class="booth-cam" id="boothCam" hidden>
+      <video id="boothVideo" autoplay playsinline muted></video>
+      <div class="booth-count" id="boothCount" aria-live="assertive"></div>
+      <div class="booth-flash" id="boothFlash"></div>
+    </div>
+    <p class="booth-status" id="boothStatus" aria-live="polite"></p>
+    <div class="actions">
+      <button id="camStart" type="button">📸 Start camera</button>
+      <button id="camSnap" type="button" hidden>Take 4 photos</button>
+      <button id="boothUploadBtn" type="button" class="soft">Upload photos</button>
+      <input id="boothUpload" type="file" accept="image/*" multiple hidden>
+    </div>
+    <div class="booth-result" id="boothResult" hidden>
+      <canvas id="boothStrip" aria-label="Your birthday photo strip"></canvas>
+      <div class="actions">
+        <button id="stripDl" type="button">Download strip</button>
+        <button id="stripRetake" type="button" class="soft">Retake</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="memories" aria-labelledby="mem-title">
+    <h2 id="mem-title">Birthday memories</h2>
+    <p class="lede">Tap the photo strip to take a closer look.</p>
+    <div class="strip-stage">
+      <div id="photobooth-strip" class="photobooth-strip" title="Tap to view our birthday memories" role="button" tabindex="0"
+          aria-label="Photobooth Film Strip">
+          <div class="film-tape"></div>
+          <div class="film-strip-inner">
+              <div class="film-header">
+                  <span class="film-logo">✦ BIRTHDAY MEMORIES ✦</span>
+                  <span class="film-cut-tag">PARTY 4 CUTS</span>
+              </div>
+
+              <div class="film-photos">
+                  <div class="film-frame">
+                      <div class="film-img-box">
+                          <img src="photo 1.jpg" alt="Birthday cake with candles" class="film-img">
+                          <div class="film-gloss"></div>
+                      </div>
+                      <span class="film-frame-label font-handwriting">ang cute ko dito 😆 🎂</span>
+                  </div>
+
+                  <div class="film-frame">
+                      <div class="film-img-box">
+                          <img src="photo 2.jpg" alt="Party balloons and laughter" class="film-img">
+                          <div class="film-gloss"></div>
+                      </div>
+                      <span class="film-frame-label font-handwriting">Na Pitikan 😆😆😆 </span>
+                  </div>
+
+                  <div class="film-frame">
+                      <div class="film-img-box">
+                          <img src="Photo 3.jpg" alt="Opening birthday gifts" class="film-img">
+                          <div class="film-gloss"></div>
+                      </div>
+                      <span class="film-frame-label font-handwriting">Me and my Kuya 💗💗</span>
+
+                  </div>
+                  <div class="film-frame">
+                      <div class="film-img-box">
+                          <img src="photo 4.jpg" alt="Opening birthday gifts" class="film-img">
+                          <div class="film-gloss"></div>
+                      </div>
+                      <span class="film-frame-label font-handwriting"> My Best Memories 💗💗 </span>
+                  </div>
+                  </div>
+              </div>
+
+              <div class="film-footer">
+                  <span class="film-date">HAPPY BIRTHDAY • 10/30/2007 - 10:00 AM</span>
+                  <div class="film-barcode">
+                      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="jar" aria-labelledby="jar-title">
+    <h2 id="jar-title">Wish jar</h2>
+    <p class="lede">Tap the button to pull out a birthday wish.</p>
+    <div id="wish" aria-live="polite">Your wish is waiting inside ✨</div>
+    <button id="pick" type="button">Pick a wish</button>
+  </section>
+
+  <footer>Made with 💗 by <b>Someone special</b> for <b>Birthday Celebrant</b></footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
